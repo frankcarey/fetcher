@@ -471,7 +471,7 @@ class Site extends Pimple implements SiteInterface {
    * Configure the site object from the siteInfo file.
    */
   public function configureWithSiteInfoFile() {
-    if ($conf = getSiteInfoFromInfoFile()) {
+    if ($conf = $this->getSiteInfoFromInfoFile()) {
       $this->configure($conf);
       return TRUE;
     }
@@ -508,7 +508,7 @@ class Site extends Pimple implements SiteInterface {
     }
     // We don't go looking for an info file if `name` isn't set.
     if (!$force_remote && is_file($this['site.info path'])) {
-      return $this->getSiteInfoFromInfoFile();
+      return $this->configureWithSiteInfoFile();
     }
     else {
       if ($conf = $this['info_fetcher']->getInfo($this['name'])) {
