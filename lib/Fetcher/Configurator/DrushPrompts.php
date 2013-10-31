@@ -28,6 +28,8 @@ class DrushPrompts implements ConfiguratorInterface {
         }
       }
     });
+    // TODO: This should move or we should retitle this class drush - this isn't a prompt.
+    $site['log function'] = 'drush_log';
   }
 }
  
